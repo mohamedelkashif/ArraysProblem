@@ -1,0 +1,44 @@
+package arrayCombinations;
+
+public class PostiveAndNegative {
+	
+	public static void separateArray(int[] arr) {
+		int key, j;
+	    for(int i = 1; i < arr.length; i++)
+	    {
+	        key = arr[i];
+	 
+	        // if current element is positive
+	        // do nothing
+	        if (key > 0)
+	            continue;
+	 
+	        /* if current element is negative,
+	        shift positive elements of arr[0..i-1],
+	        to one position to their right */
+	        j = i - 1;
+	        while (j >= 0 && arr[j] > 0)
+	        {
+	            arr[j + 1] = arr[j];
+	            j = j - 1;
+	        }
+	 
+	        // Put negative element at its right position
+	        arr[j + 1] = key;
+	    }
+	    
+	    for(int x=0;x<arr.length;x++)
+	    {
+	    	System.out.print(arr[x]+",");
+	    }
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		int [] arr = {1,-5,-1,3,23,-12};
+		separateArray(arr);
+
+	}
+
+}
